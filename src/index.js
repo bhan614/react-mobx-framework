@@ -7,9 +7,9 @@ import Routers from './pages'
 class App extends React.Component {
     render() {
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <Routers />
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }
