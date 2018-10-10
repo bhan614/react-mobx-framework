@@ -100,10 +100,6 @@ const config = {
         hints: false
     },
     plugins: [
-        new webpack.DllReferencePlugin({
-            context : project.basePath,
-            manifest: path.resolve(project.basePath, 'dll', 'manifest.json')
-        }),
         new HtmlWebpackPlugin({
             template : 'index.html',
             inject   : true,
@@ -146,6 +142,10 @@ if (envDevelopment) {
     })
 
     config.plugins.push(
+        new webpack.DllReferencePlugin({
+            context : project.basePath,
+            manifest: path.resolve(project.basePath, 'dll', 'manifest.json')
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     )
@@ -192,11 +192,7 @@ if (envProduction) {
         new AssetsPlugin({
           filename: `${project.outDir}/manifest.js`,
           processOutput: assets => 'window.staticMap=' + JSON.stringify(assets, null, 2)
-        }),
-        new CopyWebpackPlugin([{
-            from : path.join(project.basePath,'dll'),
-            to   : path.join(project.basePath,'dist','dll')
-        }])
+        })
     )
 }
 
