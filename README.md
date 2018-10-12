@@ -1,4 +1,4 @@
-### 大后台
+### react-mobx基础框架
 #### react16 + react-router4 + mobx + webpack4
 
 #### Install
